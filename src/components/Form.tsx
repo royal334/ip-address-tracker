@@ -28,12 +28,12 @@ function Form(props:FormProps) {
       return;
     }
 
-    const apiKey = import.meta.env.VITE_API_KEY_IP_ADDRESS || "";
+  //   const apiKey = import.meta.env.VITE_API_KEY_IP_ADDRESS || "";
 
-    if (!apiKey) {
-      setError("API key is missing. Please check your .env file.");
-      return;
-  }
+  //   if (!apiKey) {
+  //     setError("API key is missing. Please check your .env file.");
+  //     return;
+  // }
 
     // Clear previous state
     setCity("");
@@ -44,7 +44,7 @@ function Form(props:FormProps) {
     setError(null);
 
     try {
-      const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`);
+      const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY_IP_ADDRESS}&ipAddress=${ipAddress}`);
       if (!res.ok) {
         throw new Error("Network response was not ok");
       }
