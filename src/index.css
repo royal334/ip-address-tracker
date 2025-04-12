@@ -6,6 +6,10 @@
   --color-dark-gray: hsl(0, 0%, 59%);
 }
 
+body{
+  font-family: 'Rubik', sans-serif;
+}
+
 .header{
   background-image: url(/images/pattern-bg-mobile.png);
   background-repeat: no-repeat;
@@ -19,3 +23,7 @@
   }
   
 }
+
+.leaflet-container{
+  height: 80vh; 
+} 
