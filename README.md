@@ -12,7 +12,7 @@ This is a solution to the [IP address tracker challenge on Frontend Mentor](http
 
 ### Screenshot
 
-![Project Preview](public/images/projectpreview.jpg
+![Project Preview](public/images/projectpreview.jpg)
 
 ### Built with
 
