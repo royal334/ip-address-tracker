@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-very-dark-gray: hsl(0, 0%, 17%);
+  --color-dark-gray: hsl(0, 0%, 59%);
+}
+
+.header{
+  background-image: url(/images/pattern-bg-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .header{
+    background-image: url(/images/pattern-bg-desktop.png);
+  }
+  
+}
