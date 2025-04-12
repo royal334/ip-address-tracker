@@ -21,7 +21,7 @@ function Map(props:MapProps) {
       <div className=''>
           {props.lat ===  undefined || props.lng === undefined ? 
           <div className="flex items-center justify-center h-[50vh]">
-          <p className="text-2xl text-gray-500">Map will appears here</p>
+          <p className="text-2xl text-gray-500">The map will appears here</p>
          </div> :
 
           <MapContainer
