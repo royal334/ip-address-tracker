@@ -28,12 +28,6 @@ function Form(props:FormProps) {
       return;
     }
 
-  //   const apiKey = import.meta.env.VITE_API_KEY_IP_ADDRESS || "";
-
-  //   if (!apiKey) {
-  //     setError("API key is missing. Please check your .env file.");
-  //     return;
-  // }
 
     // Clear previous state
     setCity("");
