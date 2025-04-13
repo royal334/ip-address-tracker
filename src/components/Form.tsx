@@ -38,32 +38,35 @@ function Form(props:FormProps) {
     setError(null);
 
     try {
-      const res = await fetch(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_API_KEY_IP_ADDRESS}&ipAddress=${ipAddress}`);
+      const res = await fetch(`http://ip-api.com/json/${ipAddress}?fields=status,message,country,countryCode,regionName,city,lat,lon,offset,isp,query`);
+
       if (!res.ok) {
         throw new Error("Network response was not ok");
       }
 
       const data = await res.json();
-      const city = data.location.city; // Extract city from the API response
-      const country = data.location.country;
-      const timezone = data.location.timezone
+      const city = data.city; 
+      const countryCode = data.countryCode;
       const isp =data.isp;
-      const lat= data.location.lat
-      const lng= data.location.lng
+      const lat= data.lat
+      const lon= data.lon
+      const offset = data.offset
+      const timezone =` ${offset/3600}.00`;
 
       props.setLat(lat)
-      props.setLng(lng)
+      props.setLng(lon)
       
-      setTimezone(timezone)
+      setTimezone(timezone) 
       setIsp(isp)
-      setCountry(country)
+      setCountry(countryCode)
       setCity(city); 
       setIsSubmitted(true)
       setError(null); // Clear any previous errors
       console.log(data);
+      console.log(lat, lon)
 
       if(city == '') setCity('--')
-      if(country == '') setCountry('--')  
+      if(countryCode == '') setCountry('--')  
       if(isp == '') setIsp('--')
       if(timezone == '') setTimezone('--')
 

@@ -1,5 +1,5 @@
 import 'leaflet/dist/leaflet.css';
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import {Icon} from 'leaflet'
 
 type MapProps = {
@@ -13,6 +13,12 @@ function Map(props:MapProps) {
           iconUrl: '/images/icon-location.svg',
           iconSize: [35, 45]
      })
+
+     function RecenterMap({ lat, lng }: { lat: number; lng: number }) {
+          const map = useMap();
+          map.setView([lat, lng], 13); // Re-center the map to the new position
+          return null;
+     }
 
 
   return (
@@ -32,6 +38,8 @@ function Map(props:MapProps) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+
+          <RecenterMap lat={props.lat} lng={props.lng} />
           <Marker position={[props.lat, props.lng]} icon={customIcon}>
           <Popup>
           This is the location.
@@ -41,7 +49,7 @@ function Map(props:MapProps) {
 
           } 
 
-      </div>
+     </div>
     </>
   );
 }

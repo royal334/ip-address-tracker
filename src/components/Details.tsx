@@ -4,7 +4,7 @@ type DetailsProps ={
      city: string | undefined
      country: string | undefined
      isp: string | undefined
-     timezone: string | undefined
+     timezone: string| undefined
      //onSubmit: (e: React.FormEvent) => void
 }
 
