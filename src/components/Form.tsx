@@ -38,7 +38,7 @@ function Form(props:FormProps) {
     setError(null);
 
     try {
-      const res = await fetch(`http://ip-api.com/json/${ipAddress}?fields=status,message,country,countryCode,regionName,city,lat,lon,offset,isp,query`);
+      const res = await fetch(`https://ip-api.com/json/${ipAddress}?fields=status,message,country,countryCode,regionName,city,lat,lon,offset,isp,query`);
 
       if (!res.ok) {
         throw new Error("Network response was not ok");
