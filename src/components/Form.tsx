@@ -62,8 +62,7 @@ function Form(props:FormProps) {
       setCity(city); 
       setIsSubmitted(true)
       setError(null); // Clear any previous errors
-      console.log(data);
-      console.log(lat, lon)
+
 
       if(city == '') setCity('--')
       if(countryCode == '') setCountry('--')  
