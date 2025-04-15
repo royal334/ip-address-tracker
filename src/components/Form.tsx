@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Details from "./Details";
+import axios from 'axios'
 
 type FormProps ={
 
@@ -38,20 +39,23 @@ function Form(props:FormProps) {
     setError(null);
 
     try {
-      const res = await fetch(`https://ip-api.com/json/${ipAddress}?fields=status,message,country,countryCode,regionName,city,lat,lon,offset,isp,query`);
+      const res = await axios.get(`https://api.ipgeolocation.io/ipgeo?apiKey=${import.meta.env.VITE_API_KEY_IP_ADDRESS}&ip=${ipAddress}`); 
 
-      if (!res.ok) {
-        throw new Error("Network response was not ok");
-      }
+      // if (!res.ok) {
+      //   throw new Error("Network response was not ok");
+      // }
 
-      const data = await res.json();
-      const city = data.city; 
-      const countryCode = data.countryCode;
-      const isp =data.isp;
-      const lat= data.lat
-      const lon= data.lon
-      const offset = data.offset
-      const timezone =` ${offset/3600}.00`;
+      
+
+      //const data = await res.json();
+      console.log(res)
+      const city = res.data.city; 
+      const countryCode = res.data.country_code2;
+      const isp = res.data.isp;
+      const lat= res.data.latitude
+      const lon= res.data.longitude
+      const offset = res.data.time_zone.offset
+      const timezone =` ${offset}.00`;
 
       props.setLat(lat)
       props.setLng(lon)
